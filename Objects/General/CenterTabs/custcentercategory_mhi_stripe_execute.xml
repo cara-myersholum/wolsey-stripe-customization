@@ -1,0 +1,5 @@
+<centercategory scriptid="custcentercategory_mhi_stripe_execute">
+  <center>BASIC</center>
+  <centertab>[scriptid=custcentertab_mhi_stripe_tab]</centertab>
+  <label>Execute Script Manually</label>
+</centercategory>

@@ -1,0 +1,670 @@
+/*! embeded from netsuite */
+/* Variables */
+* {
+	box-sizing: border-box;
+}
+#div-body {
+	font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+	font-size: 16px;
+	-webkit-font-smoothing: antialiased;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	height: 100vh;
+
+	width: 30vw;
+	min-width: 500px;
+	align-self: center;
+	box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
+	0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
+	border-radius: 7px;
+	padding: 40px;
+}
+.hidden {
+	display: none;
+}
+#payment-message {
+	color: rgb(105, 115, 134);
+	font-size: 16px;
+	line-height: 20px;
+	padding-top: 12px;
+	text-align: center;
+}
+#payment-element {
+	margin-bottom: 24px;
+}
+/* Buttons and links */
+button {
+	background: #5469d4;
+	font-family: Arial, sans-serif;
+	color: #ffffff;
+	border-radius: 4px;
+	border: 0;
+	padding: 12px 16px;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+	display: block;
+	transition: all 0.2s ease;
+	box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
+	width: 100%;
+}
+button:hover {
+	filter: contrast(115%);
+}
+button:disabled {
+	opacity: 0.5;
+	cursor: default;
+}
+/* spinner/processing state, errors */
+.spinner,
+.spinner:before,
+.spinner:after {
+	border-radius: 50%;
+}
+.spinner {
+	color: #ffffff;
+	font-size: 22px;
+	text-indent: -99999px;
+	margin: 0px auto;
+	position: relative;
+	width: 20px;
+	height: 20px;
+	box-shadow: inset 0 0 0 2px;
+	transform: translateZ(0);
+}
+.spinner:before,
+.spinner:after {
+	position: absolute;
+	content: "";
+}
+.spinner:before {
+	width: 10.4px;
+	height: 20.4px;
+	background: #5469d4;
+	border-radius: 20.4px 0 0 20.4px;
+	top: -0.2px;
+	left: -0.2px;
+	transform-origin: 10.4px 10.2px;
+	-webkit-animation: loading 2s infinite ease 1.5s;
+	animation: loading 2s infinite ease 1.5s;
+}
+.spinner:after {
+	width: 10.4px;
+	height: 10.2px;
+	background: #5469d4;
+	border-radius: 0 10.2px 10.2px 0;
+	top: -0.1px;
+	left: 10.2px;
+	transform-origin: 0px 10.2px;
+	-webkit-animation: loading 2s infinite ease;
+	animation: loading 2s infinite ease;
+}
+@-webkit-keyframes loading {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+@keyframes loading {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+@media only screen and (max-width: 600px) {
+	form {
+		width: 80vw;
+		min-width: initial;
+	}
+}
+
+/*! custom stylesheet for the NetSuite payinvoice page */
+
+@charset "UTF-8";
+@font-face {
+	font-family: Arial;
+	font-style: normal;
+	font-weight: 300;
+}
+
+@font-face {
+	font-family: Arial;
+	font-style: normal;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: Arial;
+	font-style: normal;
+	font-weight: 500;
+}
+
+@font-face {
+	font-family: Arial;
+	font-style: normal;
+	font-weight: 700;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	min-height: 100vh;
+	background: #FFF;
+}
+
+html {
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+body {
+	font-size: 14px;
+	position: relative;
+	margin: 0;
+	font-family: Arial, sans-serif;
+	line-height: 1.625;
+	color: #6A778B;
+	overflow-x: hidden;
+	background: #FFF !important;
+}
+body:not(.x-body) {
+	padding: 0 30px !important;
+}
+body,
+td,
+select,
+textarea,
+input,
+button {
+	font-family: Arial, sans-serif;
+}
+
+/* only adjust font smoothing on low-res displays */
+@media (-webkit-max-device-pixel-ratio: 1), (max-resolution: 1dppx), (max-resolution: 96dpi) {
+	body {
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-font-smoothing: antialiased;
+	}
+}
+@media (min-width: 375px) {
+	body {
+		font-size: 14px;
+	}
+}
+@media (min-width: 1290px) {
+	body {
+		font-size: 16px;
+	}
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+/* not all images should be display block */
+img.lp_image {
+	display: inline;
+}
+
+a {
+	color: inherit;
+}
+a img {
+	border: 0;
+}
+
+input,
+textarea,
+select {
+	font-family: inherit;
+}
+input::-moz-placeholder, textarea::-moz-placeholder, select::-moz-placeholder {
+	opacity: 1;
+	color: #627281;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder, select:-ms-input-placeholder {
+	opacity: 1;
+	color: #627281;
+}
+input::-ms-input-placeholder, textarea::-ms-input-placeholder, select::-ms-input-placeholder {
+	opacity: 1;
+	color: #627281;
+}
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+	opacity: 1;
+	color: #627281;
+}
+
+select::-ms-expand {
+	display: none;
+}
+
+body {
+	background-color: #FFF;
+	font-family: Arial, sans-serif;
+	font-size: 16px;
+}
+div#innerwrapper {
+	padding: 0 30px;
+	width: 100%;
+	max-width: 1440px;
+	margin: 0 auto;
+}
+div#div__header {
+	height: 70px;
+	display: flex;
+	align-items: center;
+	text-align: left;
+}
+div#div__header table,
+.q-logo {
+	display: block;
+
+	height: 60px;
+	background: url(http://tstdrv2374180.shop.netsuite.com/core/media/media.nl?id=4477&c=TSTDRV2374180&h=w7TXtiY8HvZDfi10fgHAxL67sZnOsQ-9Vv7JA8cMNI6LP-GL) left center no-repeat;
+	background-size: auto 44px;
+}
+div#innerwrapper div#div__body {
+	margin: 0;
+	padding: 20px 0 !important;
+	display: block;
+}
+
+.parentsubsidiary {
+	font-size: 14px !important;
+
+}
+
+.childsubsidiary {
+	font-style: italic;
+	font-size: 8px !important;
+}
+table .uir-page-title .uir-record-type {
+	font-weight: 500;
+	color: #262626;
+}
+td.fgroup_title {
+	padding: 8px 12px;
+	background: unset;
+	border-radius: 4px;
+}
+div.fgroup_title {
+	color: #262626 !important;
+	font-weight: 500 !important;
+	line-height: 2;
+	font-size: 16px !important;
+}
+.formtabtext.unrollformtabheaderexpand,
+.formtabtext.unrollformtabheadercollapse,
+.formtabtext.unrollformtabheaderesep {
+	background: #3875e5 !important;
+	display: flex;
+	padding: 0 13px !important;
+	border-radius: 4px;
+}
+.formtabtext.unrollformtabheaderexpand .uir-tab-unroll-label,
+.formtabtext.unrollformtabheadercollapse .uir-tab-unroll-label,
+.formtabtext.unrollformtabheaderesep .uir-tab-unroll-label {
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+}
+.formtabtext .uir-collapse-arrow-img {
+	margin-right: 10px;
+	filter: brightness(10);
+	height: auto;
+	opacity: 0.65;
+	display: block;
+}
+span.uir-label .smallgraytextnolink {
+	color: #6A778B !important;
+	font-weight: 500 !important;
+	font-size: 13px !important;
+	line-height: 1;
+}
+div.uir-field-wrapper span.uir-field.inputreadonly span.input {
+	color: #262626 !important;
+	font-size: 22px !important;
+}
+.q-header {
+	width: 100%;
+	max-width: 1380px;
+	display: flex;
+	align-items: center;
+	height: 70px;
+	background-color: #2B5EEC;
+	padding: 0 20px;
+	margin: 0 auto 80px;
+}
+.card {
+	margin-bottom: 80px !important;
+	margin-top: 80px !important;
+	box-shadow: unset !important;
+	padding: 0 30px !important;
+}
+.card h1 {
+	font-family: Arial, sans-serif;
+	font-weight: 400;
+	color: #50A248;
+	margin: 0;
+}
+.card p {
+	font-family: Arial, sans-serif;
+	font-size: 16px;
+	color: #333333;
+}
+.card p br {
+	display: none;
+}
+.card > div {
+	border-radius: unset !important;
+	height: 120px !important;
+	width: 120px !important;
+	background: transparent !important;
+	margin: 0 auto !important;
+}
+.card .checkmark {
+	display: block;
+	background-size: 103px 103px;
+	margin: 0 auto;
+	width: 120px;
+	height: 120px;
+	overflow: hidden;
+}
+.nltabcontent > .nltabcontent > div > .nltabcontent {
+	padding: 0 !important;
+	margin-top: 30px;
+}
+.unrollformsubtabheaderexpand, .unrollformsubtabheadercollapse {
+	background: #707D90 !important;
+	border-radius: 2px !important;
+}
+.unrollformsubtabheaderexpand a, .unrollformsubtabheadercollapse a {
+	font-weight: 500;
+	font-size: 14px;
+	color: #FFF !important;
+}
+.listtable > tbody > tr:not(.uir-machine-row-last):not(.uir-machine-row-focused) > td, td.listtext, td.listtexthl {
+	border-color: #E7ECEE !important;
+}
+.uir-list-header-td, .uir-machine-headerrow > td {
+	background: #F8FAFC none !important;
+}
+.listheader, .listheadertextb, .listheadertextbrt, .listheadertextbctr {
+	background: unset !important;
+	font-weight: 500;
+	color: #262626;
+}
+.summary-table .summary-td {
+	color: #6A778B !important;
+	font-weight: 500 !important;
+	line-height: 2;
+	font-size: 16px !important;
+}
+.uir-field-wrapper .subtotal-label {
+	color: #6A778B !important;
+	font-weight: 500 !important;
+	line-height: 1;
+	font-size: 13px !important;
+}
+.uir-field-wrapper .subtotal {
+	font-weight: 500;
+	color: #262626;
+	font-size: 18px !important;
+	font-weight: 500;
+	line-height: 2;
+}
+.uir-machine-headerrow > td {
+	padding: 6px 5px !important;
+}
+#custpage_quotes_tab_div #custpage_invoice_list_splits.uir-list-table .uir-list-row-tr td.uir-list-row-cell:nth-child(5),
+#custpage_quotes_tab_div #custpage_invoice_list_splits.uir-list-table .uir-machine-headerrow td:nth-child(3) {
+
+}
+#custpage_quotes_tab_div #custpage_invoice_list_splits.uir-list-table .uir-machine-headerrow td:nth-child(4) {
+
+}
+#custpage_quotes_tab_div #custpage_invoice_list_splits.uir-list-table .uir-machine-headerrow td:last-child .listheader {
+	display: none !important;
+}
+#custpage_quotes_tab_div #custpage_invoice_list_splits.uir-list-table .uir-list-row-tr td.uir-list-row-cell:nth-child(6) {
+
+}
+#custpage_quotes_tab_div #custpage_invoice_list_splits.uir-list-table .uir-list-row-tr td.uir-list-row-cell:nth-child(5) {
+	padding-right: 16px !important;
+}
+#custpage_invoice_list_splits.uir-list-table .uir-list-row-tr td.uir-list-row-cell:last-child {
+	text-align: right
+}
+.uir-list-table .uir-list-row-tr td.uir-list-row-cell:last-child a {
+	text-decoration: none;
+	display: block;
+	background: #095FB3;
+	text-align: center;
+	border-radius: 3px;
+	padding: 10px 3px;
+	width: 117px;
+	margin: 2px 0 3px 0;
+	color: #FFF;
+	font-weight: 500;
+	line-height: 1;
+	font-size: 12px;
+	float: right;
+}
+.nltabcontent > table tr td .nltabcontent {
+	border: unset !important;
+}
+.uir-machine-table-container,
+.listborder {
+	border: unset !important;
+}
+.uir-machine-row-even > td, .uir-list-row-even > td, .uir-list-additional-label-row > td {
+	background-color: #FFF !important;
+}
+#detail_table_lay table .uir-fieldgroup-content > td:first-child {
+	text-align: left;
+}
+#detail_table_lay table .uir-fieldgroup-content > td:last-child {
+
+}
+#detail_table_lay table .uir-fieldgroup-content > td:last-child .uir-field-wrapper {
+	display: inline-flex;
+	align-items: center;
+}
+.table_fields .uir-field-wrapper .smallgraytextnolink {
+	line-height: 1;
+}
+
+.savedCard {
+	ont-family: inherit;
+	background-color: #FFF !important;
+	background-size: 7px auto !important;
+	margin: 0;
+	padding: 10px 30px !important;
+	line-height: 1 !important;
+	display: flex;
+	height: auto !important;
+	font-size: 12px !important;
+	width: auto !important;
+	border: 1px solid #095FB3 !important;
+	color: #095FB3 !important;
+}
+.table_fields .uir-field-wrapper .smallgraytextnolink .smallgraytextnolink {
+	margin: 0;
+	line-height: 1;
+}
+.table_fields .uir-field-wrapper .smallgraytextnolink .smallgraytextnolink a.smallgraytextnolink {
+	text-transform: capitalize;
+	font-size: 20px !important;
+	line-height: 1;
+	display: block;
+	margin-right: 6px;
+	color: #707D90 !important;
+}
+.table_fields .uir-field-wrapper .smallgraytextnolink .smallgraytextnolink a.smallgraytextnolink::after {
+	content: ": ";
+}
+div.uir-field-wrapper span.uir-field.inputreadonly span.input {
+	color: #364750 !important;
+	font-weight: 500;
+}
+.uir-button .bntBgB .bntBgT {
+	text-decoration: none;
+	display: block;
+	background: #095FB3;
+	text-align: center;
+	border-radius: 3px;
+	padding: 10px 3px;
+	width: 117px;
+	margin: 2px 0 3px 0;
+	color: #FFF;
+	font-weight: 500;
+	line-height: 1;
+	font-size: 12px;
+}
+#tbl_submitter tr#tr_submitter,
+#tbl_secondarysubmitter tr#tr_secondarysubmitter {
+	background: unset !important;
+	border-radius: unset !important;
+	border: 0 !important;
+	box-shadow: unset !important;
+}
+#tbl_submitter tr#tr_submitter td#tdbody_submitter,
+#tbl_secondarysubmitter tr#tr_secondarysubmitter td#tdbody_secondarysubmitter {
+	height: auto !important;
+	border: 0 !important;
+	box-shadow: unset !important;
+}
+#tbl_submitter tr#tr_submitter td#tdbody_submitter #submitter,
+#tbl_submitter tr#tr_submitter td#tdbody_submitter #submitter:hover,
+#tbl_submitter tr#tr_submitter td#tdbody_submitter #submitter:focus,
+#tbl_submitter tr#tr_submitter td#tdbody_submitter #submitter:active,
+#tbl_secondarysubmitter tr#tr_secondarysubmitter td#tdbody_secondarysubmitter #secondarysubmitter,
+#tbl_secondarysubmitter tr#tr_secondarysubmitter td#tdbody_secondarysubmitter #secondarysubmitter:hover,
+#tbl_secondarysubmitter tr#tr_secondarysubmitter td#tdbody_secondarysubmitter #secondarysubmitter:active,
+#tbl_secondarysubmitter tr#tr_secondarysubmitter td#tdbody_secondarysubmitter #secondarysubmitter:focus {
+	text-decoration: none;
+	display: block;
+	background: #095FB3 !important;
+	text-align: center;
+	border-radius: 3px;
+	padding: 10px 3px !important;
+	width: 117px;
+	margin: 0;
+	color: #FFF !important;
+	font-weight: 500;
+	font-size: 12px !important;
+	line-height: 1 !important;
+	border: 0 !important;
+	outline: unset !important;
+	height: auto !important;
+	outline: unset !important;
+	box-shadow: unset !important;
+}
+#tbl_custpage_back_btn tr#tr_custpage_back_btn,
+#tbl_secondarycustpage_back_btn tr#tr_secondarycustpage_back_btn {
+	background: unset !important;
+	border: unset !important;
+}
+#tbl_custpage_back_btn tr#tr_custpage_back_btn #tdbody_custpage_back_btn,
+#tbl_secondarycustpage_back_btn tr#tr_secondarycustpage_back_btn #tdbody_secondarycustpage_back_btn {
+	border: unset !important;
+	height: unset !important;
+}
+#tbl_custpage_back_btn tr#tr_custpage_back_btn #tdbody_custpage_back_btn .bntBgT,
+#tbl_secondarycustpage_back_btn tr#tr_secondarycustpage_back_btn #tdbody_secondarycustpage_back_btn .bntBgT {
+
+	background-color: #FFF !important;
+	background-size: 7px auto !important;
+	margin: 0;
+	padding: 10px 30px !important;
+	line-height: 1 !important;
+	display: flex;
+	height: auto !important;
+	font-size: 12px !important;
+	width: auto !important;
+	border: 1px solid #095FB3 !important;
+	color: #095FB3 !important;
+}
+#tbl_custpage_invoice_listmarkall,
+#tbl_custpage_invoice_listunmarkall {
+	background: unset !important;
+}
+#tbl_custpage_invoice_listmarkall {
+	margin-right: 8px !important;
+}
+#tbl_custpage_invoice_listmarkall #tdbody_custpage_invoice_listmarkall,
+#tbl_custpage_invoice_listunmarkall #tdbody_custpage_invoice_listunmarkall,
+#tbl_custpage_next #tr_custpage_next #tdbody_custpage_next,
+#tbl_custpage_previous #tr_custpage_previous #tdbody_custpage_previous,
+#tbl_custpage_next #tr_custpage_next #tdbody_custpage_next,
+#tbl_custpage_previous #tr_custpage_previous #tdbody_custpage_previous {
+    border: unset !important;
+    height: auto !important;
+}
+#tbl_custpage_invoice_listmarkall #tdbody_custpage_invoice_listmarkall .rndbuttoninpt,
+#tbl_custpage_invoice_listunmarkall #tdbody_custpage_invoice_listunmarkall .rndbuttoninpt,
+#tbl_custpage_next #tr_custpage_next #tdbody_custpage_next .bntBgT,
+#tbl_custpage_previous #tr_custpage_previous #tdbody_custpage_previous .bntBgT,
+#tbl_custpage_next #tr_custpage_next #tdbody_custpage_next .bntBgT,
+#tbl_custpage_previous #tr_custpage_previous #tdbody_custpage_previous .bntBgT {
+	background-color: #FFF !important;
+	background-size: 7px auto !important;
+	margin: 0;
+	padding: 5px 20px !important;
+	line-height: 1 !important;
+	display: flex;
+	height: 28px !important;
+	font-size: 12px !important;
+	width: auto !important;
+	border: 1px solid #095FB3 !important;
+	color: #095FB3 !important;
+	font-weight: 400 !important;
+}
+.uir-list-row-tr > td {
+	padding: 7px 5px 7px 5px !important;
+}
+#custpage_proforma_invoice_list_splits tr.uir-machine-headerrow td:last-child {
+	width: 176px;
+
+}
+#custpage_proforma_invoice_list_splits tr.uir-machine-headerrow td:nth-child(3) {
+	width: 176px;
+}
+#detail_table_lay.payment-stripe-content {
+	max-width: 900px;
+	margin: 0 auto;
+}
+#detail_table_lay.payment-stripe-content tbody #tr_fg_custpage_mhi_stripe_subtotal_group + tr > td > table {
+	min-width: 550px;
+	width: 50%;
+}
+#detail_table_lay.payment-stripe-content tbody #tr_fg_custpage_mhi_stripe_subtotal_group + tr > td > table #tr_fg_custpage_mhi_stripe_payment_method_group td:first-child {
+	width: 100%;
+}
+.uir-list-row-cell span.checkbox_ck,
+.uir-list-row-cell span.checkbox_unck {
+	position: relative;
+	display: block;
+	margin: 0 auto;
+}
+.uir-list-row-cell span.checkbox_ck input.checkbox,
+.uir-list-row-cell span.checkbox_unck input.checkbox {
+	opacity: 0;
+	display: none;
+}
+/*# sourceMappingURL=styles.css.map */

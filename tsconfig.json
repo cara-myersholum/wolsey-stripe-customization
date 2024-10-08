@@ -1,0 +1,22 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "module": "amd",
+    "target": "es2019",
+    "moduleResolution":"node",
+    "sourceMap": false,
+    "newLine": "LF",
+    "experimentalDecorators": true,
+    "noImplicitUseStrict": true,
+    "baseUrl": ".",
+    "outDir": "FileCabinet/SuiteScripts/MHI/",
+    "paths": {
+      "N": ["node_modules/@hitc/netsuite-types/N"],
+      "N/*": ["node_modules/@hitc/netsuite-types/N/*"]
+    },
+    "removeComments": false
+  },
+  "exclude": ["node_modules", "FileCabinet",
+    "/Source/Autopay/Stripe"
+  ]
+}

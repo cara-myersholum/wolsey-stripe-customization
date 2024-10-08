@@ -1,0 +1,25 @@
+<suitelet scriptid="customscript_mhi_stripe_payment_portal">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>MHI Stripe Payment Link SU</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/MHI/PaymentLink/MHI_Stripe_Payment_Portal_SU.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_mhi_stripe_payment_portal">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <eventtype></eventtype>
+      <isdeployed>T</isdeployed>
+      <isonline>T</isonline>
+      <loglevel>DEBUG</loglevel>
+      <runasrole>ADMINISTRATOR</runasrole>
+      <status>RELEASED</status>
+      <title>MHI Stripe Payment Portal SU</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</suitelet>

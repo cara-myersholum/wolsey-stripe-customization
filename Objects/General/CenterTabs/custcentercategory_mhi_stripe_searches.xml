@@ -1,0 +1,19 @@
+<centercategory scriptid="custcentercategory_mhi_stripe_searches">
+  <center>BASIC</center>
+  <centertab>[scriptid=custcentertab_mhi_stripe_tab]</centertab>
+  <label>Searches</label>
+  <links>
+    <link>
+      <linklabel></linklabel>
+      <linkobject>[scriptid=customsearch_mhi_stripe_transaction_list]</linkobject>
+      <linktasktype>SRCH_RSLT</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+    <link>
+      <linklabel></linklabel>
+      <linkobject>[scriptid=customsearch_mhi_stripe_entity_map]</linkobject>
+      <linktasktype>SRCH_RSLT</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+  </links>
+</centercategory>

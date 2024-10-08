@@ -1,0 +1,19 @@
+<centercategory scriptid="custcentercategory_mhi_stripe_setup">
+  <center>BASIC</center>
+  <centertab>[scriptid=custcentertab_mhi_stripe_tab]</centertab>
+  <label>Setup</label>
+  <links>
+    <link>
+      <linklabel></linklabel>
+      <linkobject>[scriptid=customrecord_mhi_stripe_setup]</linkobject>
+      <linktasktype>LIST</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+    <link>
+      <linklabel></linklabel>
+      <linkobject>[scriptid=customrecord_mhi_stripe_bundles_config]</linkobject>
+      <linktasktype>LIST</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+  </links>
+</centercategory>

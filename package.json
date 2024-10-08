@@ -1,0 +1,31 @@
+{
+  "name": "com.mhi.stripe",
+  "version": "1.0.0",
+  "description": "MHI - Stripe",
+  "license": "MIT",
+  "repository": {
+    "type": "github",
+    "url": "git@github.com:MyersHolum/netsuite.stripe.suiteapp.git"
+  },
+  "devDependencies": {
+    "@hitc/netsuite-types": "2022.1.0",
+    "@typescript-eslint/eslint-plugin": "5.12.1",
+    "@typescript-eslint/parser": "5.12.1",
+    "eslint": "8.9.0",
+    "tslint": "^6.1.3",
+    "typescript": "^4.5.5"
+  },
+  "scripts": {
+    "compile-typescript": "tsc",
+    "deploy": "suitecloud project:deploy"
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "plugin:@typescript-eslint/recommended"
+    ]
+  }
+}

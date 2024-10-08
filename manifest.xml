@@ -1,0 +1,12 @@
+<manifest projecttype="ACCOUNTCUSTOMIZATION">
+    <projectname>Stripe</projectname>
+    <frameworkversion>1.0</frameworkversion>
+    <dependencies>
+        <features>
+            <feature required="true">SERVERSIDESCRIPTING</feature>
+            <feature required="true">CUSTOMRECORDS</feature>
+            <feature required="true">WORKFLOW</feature>
+            <feature required="true">CUSTOMTRANSACTIONS</feature>
+        </features>
+    </dependencies>
+</manifest>
